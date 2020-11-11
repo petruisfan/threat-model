@@ -307,8 +307,8 @@
                   "type": "Information disclosure",
                   "status": "Mitigated",
                   "severity": "Medium",
-                  "description": "Only the owner of the file should be able to access the scan results from sandbox",
-                  "mitigation": "The results are protected by apikey (only the owner can access them)"
+                  "description": "Other users might be able to access the scan results from dynamic analysis, like in the case of multiscanning where hash value or data_id + apikey will give access to the results.\nOnly the owner of the file should be able to access the scan results.",
+                  "mitigation": "The results are protected by apikey (only the owner can access them). The data_id and hash are not exposed anywhere, an attacker would need to know the values beforehand."
                 },
                 {
                   "ruleId": "13000296-b17d-4b72-9cc4-f5cc33f80e4c",
@@ -316,8 +316,8 @@
                   "type": "Information disclosure",
                   "status": "Mitigated",
                   "severity": "Medium",
-                  "description": "We store data about the scan results after the analysis is finished",
-                  "mitigation": "Data is stored for one hour to give the user time to access it. Afterward, it is deleted to decrease the chances of unauthorized access"
+                  "description": "We store data about the scan results after the analysis is finished. An attacker might get access to data at rest by querying our API.",
+                  "mitigation": "Data is stored for one hour to give the user time to access it. Afterward, it is deleted to decrease the chances of unauthorized access. And it can only be accessed with the correct combination of ID and apikey"
                 },
                 {
                   "ruleId": "edb05d76-a695-455f-947b-7d67b78bc31d",
